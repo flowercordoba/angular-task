@@ -10,6 +10,10 @@ const routes: Routes = [
     component: PagesComponent,
     children: [
       { path: "dashboard", component: DashboardComponent },
+      { path: "data", loadChildren:()=>import('./modules/data-table/data-table.module').then(m =>m.DataTableModule) },
+      { path: "user", loadChildren:()=>import('./modules/user/user.module').then(m =>m.UserModule) },
+      { path: "task", loadChildren:()=>import('./modules/tareas/tareas.module').then(m =>m.TareasModule) },
+
       { path: "", redirectTo: "/dashboard", pathMatch: "full" },
 
     ],

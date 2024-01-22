@@ -15,6 +15,7 @@ import { PagesComponent } from './pages/pages.component';
     P404Component,
     DashboardComponent,
     PagesComponent,
+
    
 
   ],
