@@ -7,6 +7,7 @@ import { CreateComponent } from './pages/create/create.component';
 import { ListTaskComponent } from './pages/list-task/list-task.component';
 import { EditTaskComponent } from './pages/edit-task/edit-task.component';
 import { DetailTaskComponent } from './pages/detail-task/detail-task.component';
+import { CompletedTaskComponent } from './pages/completed-task/completed-task.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { DetailTaskComponent } from './pages/detail-task/detail-task.component';
     CreateComponent,
     ListTaskComponent,
     EditTaskComponent,
-    DetailTaskComponent
+    DetailTaskComponent,
+    CompletedTaskComponent
   ],
   imports: [
     CommonModule,

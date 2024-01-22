@@ -5,6 +5,7 @@ import { CreateComponent } from './pages/create/create.component';
 import { ListTaskComponent } from './pages/list-task/list-task.component';
 import { DetailTaskComponent } from './pages/detail-task/detail-task.component';
 import { EditTaskComponent } from './pages/edit-task/edit-task.component';
+import { CompletedTaskComponent } from './pages/completed-task/completed-task.component';
 
 const routes: Routes = [{
   path:'',
@@ -14,6 +15,7 @@ const routes: Routes = [{
     {path:'update',component:EditTaskComponent},
     {path:'detail',component:DetailTaskComponent},
     {path:'list',component:ListTaskComponent},
+    {path:'completed',component:CompletedTaskComponent},
   ]
 }];
 
