@@ -1,0 +1,23 @@
+<div class="flex flex-col h-screen">
+    <app-header class="bg-black-100 p-4 shadow-md">Header</app-header>
+
+    <div class="flex flex-1 overflow-hidden">
+        <app-sidebar class="bg-gray-200 w-64 p-4 overflow-auto">Sidebar</app-sidebar>
+
+        <div class="flex-1 p-4 overflow-auto">
+            <app-breadcrumbs>Breadcrumbs</app-breadcrumbs>
+  
+            <div class="mt-4">
+                <div class="max-w-full">
+                    <div class="bg-white shadow-md rounded-lg p-4">
+                       <router-outlet></router-outlet>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+    <app-footer class="bg-gray-900-300 p-4 shadow-md">Footer</app-footer>
+
+</div>
