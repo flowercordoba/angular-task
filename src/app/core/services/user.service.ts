@@ -1,10 +1,11 @@
 import { Injectable, NgZone } from "@angular/core";
-import { tap } from "rxjs";
+import { Observable, catchError, map, of, tap } from "rxjs";
 import { LoginForm } from "../interfaces/login-form.interface";
 import { RegisterForm } from "../interfaces/register-form.interface";
 import { environment } from "src/environments/environments";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
+import { UserModel } from "../models/user.model";
 
 @Injectable({
   providedIn: "root",
@@ -12,6 +13,9 @@ import { Router } from "@angular/router";
 
 export class UserService {
   private readonly base_url = environment.baseUrl;
+  token!: string | string[];
+  public auth2: any;
+  public usuario:UserModel | undefined;
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -19,7 +23,6 @@ export class UserService {
     ) {} 
 
   
-  public auth2: any;
 
   crearUsuario(formData: RegisterForm) {
     return this.http.post(`${this.base_url}/auth/register`, formData).pipe(
@@ -41,11 +44,31 @@ export class UserService {
 
     this.auth2.signOut().then(() => {
 
-      this.ngZone.run(() => {
-        this.router.navigateByUrl('/login');
-      })
+      this.router.navigateByUrl('/auth/login');
+
     });
 
   }
+  
+  validarToken(): Observable<boolean> {
+    
+    return this.http.get(`${ this.base_url }/user/profile`, {
+      headers: {
+        'x-token': this.token
+      }
+    }).pipe(
+      map( (resp: any) => {
+        const { email, name, role, id } = resp.user;
+        console.log({resp})
+        
+        this.usuario = new UserModel( name, email, '', role, id );
+        localStorage.setItem('token', resp.token );
+        return true;
+      }),
+      catchError( error => of(false) )
+    );
+
+  }
+
 
 }
