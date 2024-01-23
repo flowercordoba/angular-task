@@ -9,7 +9,7 @@ import { UserService } from "src/app/core";
 })
 export class HeaderComponent {
   showUserMenu = false;
-  constructor(private router: Router, private userService: UserService) {}
+  constructor(private userService: UserService) {}
 
   toggleUserMenu() {
     this.showUserMenu = !this.showUserMenu;
