@@ -7,12 +7,15 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ModalComponent } from 'src/app/components/modal/modal.component';
 
 
 @NgModule({
   declarations: [
     LoginPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    ModalComponent
+    
   ],
   imports: [
     CommonModule,

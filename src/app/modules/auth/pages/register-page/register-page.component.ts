@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -6,19 +7,32 @@ import { AuthService } from 'src/app/core/services/auth.service';
   templateUrl: './register-page.component.html',
   styleUrls: ['./register-page.component.css']
 })
-export class RegisterPageComponent {
-  constructor(private authService: AuthService) {}
+export class RegisterPageComponent implements OnInit {
+  registerForm!: FormGroup;
 
-  registerTest() {
-    const userData = {
-      email: 'newuser@example.com', // Datos de prueba para el registro
-      password: 'password123',
-      // Agrega aquí otros campos necesarios para el registro
-    };
+  constructor(private fb: FormBuilder, private authService: AuthService) {}
 
-    this.authService.register(userData).subscribe(
-      response => console.log('Register response:', response),
-      error => console.log('Error:', error)
-    );
+  ngOnInit(): void {
+    this.registerForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
+
+  register() {
+    if (this.registerForm.valid) {
+      this.authService.register(this.registerForm.value).subscribe(
+        response => {
+          console.log('Registro exitoso:', response);
+          console.info('Registro exitoso.');
+        },
+        error => {
+          console.error('Error en el registro:', error);
+        }
+      );
+    } else {
+      console.error('El formulario no es válido.');
+    }
   }
 }
