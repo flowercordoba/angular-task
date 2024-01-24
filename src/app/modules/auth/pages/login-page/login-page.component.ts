@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
-import { LoginForm } from 'src/app/core/interfaces/login-form.interface';
-import { UserService } from 'src/app/core/services/user.service'; // Asegúrate de que la ruta sea correcta
-import Swal from 'sweetalert2';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -11,38 +7,17 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent {
-  public formSubmitted = false;
+  constructor(private authService: AuthService) {}
 
-  public loginForm = this.fb.group({
-    email: [localStorage.getItem('email') || '', [Validators.required, Validators.email]],
-    password: ['', Validators.required]
-  });
-
-  constructor(
-    private router: Router,
-    private fb: FormBuilder,
-    private usuarioService: UserService
-  ) { }
-
-  login() {
-    if (this.loginForm.invalid) {
-      return;
-    }
-  
-    const formValue: LoginForm = {
-      email: this.loginForm.get('email')?.value ?? '', 
-      password: this.loginForm.get('password')?.value ?? ''
+  loginTest() {
+    const credentials = { 
+      email: 'test@example.com', // Usa credenciales de prueba
+      password: 'password123' 
     };
-  
-    this.usuarioService.login(formValue)
-      .subscribe({
-        next: (resp) => {
-          this.router.navigateByUrl('/');
-        },
-        error: (err) => {
-          Swal.fire('Error', err.error.msg, 'error');
-        }
-      });
+
+    this.authService.login(credentials).subscribe(
+      response => console.log('Login response:', response),
+      error => console.log('Error:', error)
+    );
   }
-  
 }
