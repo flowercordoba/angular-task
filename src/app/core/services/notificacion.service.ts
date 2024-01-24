@@ -19,7 +19,7 @@ export class NotificacionService {
   }
 
   deleteNotificacion(notificacionData: any) {
-    return this.http.put(`${this.base_url}/delete`, notificacionData);
+    return this.http.delete(`${this.base_url}/delete`, notificacionData);
   }
 
 }

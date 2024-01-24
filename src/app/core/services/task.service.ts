@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, map } from 'rxjs';
+import { Task } from 'src/app/modules/data-table/data-table.component';
 import { environment } from 'src/environments/environments';
 
 @Injectable({
@@ -18,15 +20,14 @@ export class TaskService {
     return this.http.post(`${this.base_url}/send-task`, taskData);
   }
 
-  getTasks() {
-    return this.http.get(`${this.base_url}/task`);
+  getTasks(): Observable<Task[]> {
+    return this.http.get<Task[]>(`${this.base_url}/task`);
   }
-
-  getTaskById(id: number) {
+  getTaskById(id: string) {
     return this.http.get(`${this.base_url}/task/${id}`);
   }
 
-  updateTask(taskData: any) {
+  updateTask(taskData: any,update:any) {
     return this.http.put(`${this.base_url}/task-update`, taskData);
   }
 

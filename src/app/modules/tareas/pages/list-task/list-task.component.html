@@ -1,1 +1,9 @@
-<p>list-task works!</p>
+<app-create></app-create>
+<app-edit-task></app-edit-task>
+<app-detail-task></app-detail-task>
+<!-- list-task.component.html -->
+<ul>
+    <li *ngFor="let task of tasks">{{ task.title }}</li>
+    <!-- Asegúrate de ajustar 'task.title' según la estructura de tus objetos de tarea -->
+  </ul>
+  <app-nofitication></app-nofitication>

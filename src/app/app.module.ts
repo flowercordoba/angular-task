@@ -8,9 +8,8 @@ import { P404Component } from './pages/p-404/p-404.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SharedModule } from './shared/shared.module';
 import { PagesComponent } from './pages/pages.component';
-import { NofiticationComponent } from './components/nofitication/nofitication.component';
-import { PaginationComponent } from './components/pagination/pagination.component';
 import { SearchComponent } from './components/search/search.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,8 +17,6 @@ import { SearchComponent } from './components/search/search.component';
     P404Component,
     DashboardComponent,
     PagesComponent,
-    NofiticationComponent,
-    PaginationComponent,
     SearchComponent,
 
    
@@ -29,7 +26,8 @@ import { SearchComponent } from './components/search/search.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule,
 
   ],
   providers: [],

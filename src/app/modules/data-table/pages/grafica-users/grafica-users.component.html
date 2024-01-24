@@ -1,1 +1,30 @@
-<p>grafica-users works!</p>
+<!-- grafica-users.component.html -->
+<div class="p-4">
+    <div class="mb-4">
+      <input type="text" [(ngModel)]="searchText" (keyup)="applyFilter()" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Buscar usuario...">
+    </div>
+  
+    <div class="bg-white shadow-md rounded my-6">
+      <table class="text-left w-full border-collapse">
+        <!-- Table headers -->
+        <thead>
+          <tr>
+            <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Nombre</th>
+            <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Email</th>
+            <!-- Más cabeceras -->
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Iterar sobre los usuarios para las filas de la tabla -->
+          <tr class="hover:bg-grey-lighter" *ngFor="let user of users">
+            <td class="py-4 px-6 border-b border-grey-light">{{ user.name }}</td>
+            <td class="py-4 px-6 border-b border-grey-light">{{ user.email }}</td>
+            <!-- Más celdas -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+   <app-pagination></app-pagination>
+  </div>
+  

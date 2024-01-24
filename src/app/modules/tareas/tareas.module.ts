@@ -8,6 +8,7 @@ import { ListTaskComponent } from './pages/list-task/list-task.component';
 import { EditTaskComponent } from './pages/edit-task/edit-task.component';
 import { DetailTaskComponent } from './pages/detail-task/detail-task.component';
 import { CompletedTaskComponent } from './pages/completed-task/completed-task.component';
+import { NofiticationComponent } from 'src/app/components';
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import { CompletedTaskComponent } from './pages/completed-task/completed-task.co
     ListTaskComponent,
     EditTaskComponent,
     DetailTaskComponent,
-    CompletedTaskComponent
+    CompletedTaskComponent,
+    NofiticationComponent,
+
   ],
   imports: [
     CommonModule,

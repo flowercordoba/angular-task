@@ -11,7 +11,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   register(userData: any) {
-    return this.http.post(`${this.base_url}/signup`, userData);
+    return this.http.post(`${this.base_url}/auth/register`, userData);
   }
 
   login(credentials: any) {

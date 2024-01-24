@@ -13,12 +13,7 @@ export class HeaderComponent {
     ) {}
 
 
-  ngOnInit() {
-    this.userService.getUserProfile(data).subscribe(
-      valido => console.log('Token válido:', valido),
-      error => console.error('Error al validar token:', error)
-    );
-  }
+  
   toggleUserMenu() {
     this.showUserMenu = !this.showUserMenu;
   }

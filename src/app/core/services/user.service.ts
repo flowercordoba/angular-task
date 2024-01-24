@@ -3,6 +3,8 @@ import { environment } from "src/environments/environments";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { UserModel } from "../models/user.model";
+import { User } from "src/app/modules/data-table/data-table.component";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -24,14 +26,17 @@ export class UserService {
       return this.http.get(`${this.base_url}/user/profile/${data}`);
     }
   
-    getAllUsers(page: number) {
-      return this.http.get(`${this.base_url}/user/all/${page}`);
+    getAllUsers(page: any): Observable<User[]> {
+      // Ajusta la ruta si es necesario para incluir parámetros de paginación
+      return this.http.get<User[]>(`${this.base_url}/user/all/${page}`);
     }
   
     searchUser(query: string) {
       return this.http.get(`${this.base_url}/user/profile/search/${query}`);
     }
-
+    UpdateUser(userId: any, userData: any) {
+      return this.http.put(`${this.base_url}/user/update/${userId}`, userData);
+    }
 
 
 

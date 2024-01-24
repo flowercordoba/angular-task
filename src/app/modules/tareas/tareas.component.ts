@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./tareas.component.css']
 })
 export class TareasComponent {
-
+  
+  // Puedes añadir métodos similares para probar la obtención, actualización y eliminación de tareas
 }
