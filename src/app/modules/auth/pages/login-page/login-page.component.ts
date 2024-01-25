@@ -53,7 +53,7 @@ export class LoginPageComponent  {
 
   
         // Navegar al Dashboard
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/user/profile');
       },
       error: (err) => {
         // Si sucede un error

@@ -3,11 +3,13 @@ import { RouterModule, Routes } from "@angular/router";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { P404Component } from "./pages/p-404/p-404.component";
 import { PagesComponent } from "./pages/pages.component";
+import { AuthGuard } from "./core/guards/auth.guard";
 
 const routes: Routes = [
   {
     path: "",
     component: PagesComponent,
+    canActivate: [ AuthGuard ],
     children: [
       { path: "dashboard", component: DashboardComponent },
       { path: "data", loadChildren:()=>import('./modules/data-table/data-table.module').then(m =>m.DataTableModule) },
