@@ -14,7 +14,7 @@ const routes: Routes = [
       { path: "user", loadChildren:()=>import('./modules/user/user.module').then(m =>m.UserModule) },
       { path: "task", loadChildren:()=>import('./modules/tareas/tareas.module').then(m =>m.TareasModule) },
 
-      { path: "", redirectTo: "/dashboard", pathMatch: "full" },
+      { path: "", redirectTo: "/user", pathMatch: "full" },
 
     ],
   },

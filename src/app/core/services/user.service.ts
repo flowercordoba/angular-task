@@ -4,7 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { UserModel } from "../models/user.model";
 import { User } from "src/app/modules/data-table/data-table.component";
-import { Observable } from "rxjs";
+import { Observable, catchError, map, of, tap } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -37,6 +37,25 @@ export class UserService {
     UpdateUser(userId: any, userData: any) {
       return this.http.put(`${this.base_url}/user/update/${userId}`, userData);
     }
+
+
+    validateToken(): Observable<boolean> {
+      const token = localStorage.getItem('token') || '';
+  
+      return this.http.get(`${ this.base_url }/login/renew`, {
+        headers: {
+          'x-token': token
+        }
+      }).pipe(
+        tap( (resp: any) => {
+          localStorage.setItem('token', resp.token );
+        }),
+        map( resp => true),
+        catchError( error => of(false) )
+      );
+  
+    }
+    
 
 
 

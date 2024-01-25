@@ -6,3 +6,6 @@ export interface RegisterForm {
     password: string;
 
 }
+export interface RegisterResponse {
+    token: string;
+  }

@@ -24,7 +24,7 @@
           <!-- Menú desplegable -->
           <div *ngIf="showUserMenu" class="absolute right-0 mt-2 py-1 w-48 bg-white rounded-md shadow-lg z-50">
             <a routerLink="user/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Perfil y configuración</a>
-            <button (click)="logout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Salir</button>
+            <button  routerLink="auth/login" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Salir</button>
           </div>
         </button>
       </div>

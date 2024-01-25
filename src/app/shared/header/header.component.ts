@@ -1,7 +1,5 @@
 import { Component } from "@angular/core";
-import { Router } from "@angular/router";
-import { data } from "autoprefixer";
-import { UserService } from "src/app/core";
+import { AuthService } from "src/app/core/services/auth.service";
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
@@ -9,8 +7,7 @@ import { UserService } from "src/app/core";
 })
 export class HeaderComponent {
   showUserMenu = false;
-  constructor(private userService: UserService
-    ) {}
+  constructor(private authService: AuthService) {}
 
 
   
@@ -18,7 +15,8 @@ export class HeaderComponent {
     this.showUserMenu = !this.showUserMenu;
   }
 
-  logout() {
-    this.userService.logout();
-  }
+  
+
+ 
+
 }
